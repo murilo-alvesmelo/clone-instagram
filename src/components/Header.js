@@ -28,8 +28,9 @@ export default function Header(){
             <View style={styles.rowContainer} onLayout={onLayoutRootView}>
                 <Text style={styles.title}> Instagram </Text>
                 <View style={styles.rowIcons}>
-                    <Icon name="plus" size={25}/>
-                    <Icon name="heart" size={25}/>
+                    <Icon name="plus" size={25} style={styles.icon}/>
+                    <Icon name="heart" size={25} style={styles.icon}/>
+                    <Icon name="inbox" size={25} style={styles.icon}/>
                 </View>
             </View>
         </View>
@@ -48,9 +49,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: "space-between"
     },
-    rowIcons:{
+    rowIcons: {
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    icon: {
+        marginLeft: 10
     },
     image: {
         height: 30,
