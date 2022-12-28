@@ -8,7 +8,6 @@ import {
 } from 'react-native'
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import icon from '../../assets/imgs/icon.png'
 import Icon  from "react-native-vector-icons/Feather";
 
 SplashScreen.preventAutoHideAsync();
@@ -39,7 +38,7 @@ export default function Header(){
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: Platform.OS === 'ios' ? 20 : 10,
+        marginTop: Platform.OS === 'ios' ? 20 : 25,
         padding: 10,
         borderBottomWidth: 1,
         borderColor: '#BBB'
