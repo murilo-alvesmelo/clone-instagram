@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './src/components/Header';
 import Post from './src/components/Post';
+import Story from './src/components/Storys';
+import Feed from './src/components/screens/Feed';
 
 export default function App() {
   const comments = [{
@@ -12,11 +14,14 @@ export default function App() {
     email: 'wedertito8@gmail.com',
     nickname: 'Tito',
     comment: 'Show!'
+  },{
+    email: 'marcelodasilvalisboa1@gmail.com',
+    nickname: 'Marcelo',
+    comment: 'Massa!'
   }]
   return (
     <View style={{flex: 1}}>
-      <Header/>
-      <Post image={require('./assets/imgs/fence.jpg')} comments={comments}/>
+      <Feed/>
     </View>
   );
 }
