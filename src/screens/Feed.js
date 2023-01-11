@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, FlatList, View} from 'react-native'
-import Post from "../Post";
-import Header from "../Header";
+import Post from "../components/Post";
+import Header from "../components/Header";
 
 export default function Feed(){
     const state = {
@@ -31,7 +31,10 @@ export default function Feed(){
             nickname: 'wtito',
             email: 'wedertito8@gmail.com',
             image: require('../../../assets/imgs/gate.jpg'),
-            comments:[]
+            comments:[{
+                nickname: 'murilo_am',
+                comment: 'Zika!'
+            }]
         }]
         }
     return(

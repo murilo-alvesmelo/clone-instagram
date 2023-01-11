@@ -22,11 +22,6 @@ export default function Comments(props){
     }
     return(
         <View style={styles.container}>
-            <View style={styles.iconContainer}>
-                <Icon name="heart" size={25} style={styles.icon}/>
-                <Icon name="message-circle" size={25} style={styles.icon}/>
-                <Icon name="send" size={25} style={styles.icon}/>
-            </View>
             {view}
         </View>
     )
@@ -37,7 +32,6 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     commentContainer: {
-        marginTop: 5,
         marginLeft: 5,
         flexDirection: 'row',
     },
@@ -53,9 +47,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 5
 
-    },
-    icon: {
-        marginHorizontal: 5,
     },
     avatar: {
         width: 20,
