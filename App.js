@@ -4,6 +4,7 @@ import Header from './src/components/Header';
 import Post from './src/components/Post';
 import Story from './src/components/Storys';
 import Feed from './src/screens/Feed';
+import Navigation from './src/Navigation';
 
 export default function App() {
   const comments = [{
@@ -21,7 +22,7 @@ export default function App() {
   }]
   return (
     <View style={{flex: 1}}>
-      <Feed/>
+      <Navigation/>
     </View>
   );
 }

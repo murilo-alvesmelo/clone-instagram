@@ -42,7 +42,7 @@ export default function Feed(){
             <Header/>
             <FlatList
                 data={state.posts}
-                keyExtractor={ item => `${item.id}` }
+                keyExtractor={ item => `${item.id}`}
                 renderItem={({ item }) =>
                     <Post key={item.id} {...item}/>
                 }
