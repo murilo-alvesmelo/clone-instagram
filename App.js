@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Header from './src/components/Header';
 import Post from './src/components/Post';
 import Story from './src/components/Storys';
-import Feed from './src/components/screens/Feed';
+import Feed from './src/screens/Feed';
 
 export default function App() {
   const comments = [{

@@ -9,7 +9,7 @@ export default function Feed(){
             id: Math.random(),
             nickname: 'murilo_am',
             email: 'murilo.melo72@gmail.com',
-            image: require('../../../assets/imgs/fence.jpg'),
+            image: require('../../assets/imgs/fence.jpg'),
             comments:[{
                 nickname: 'Tales',
                 comment: 'Top dms'
@@ -21,7 +21,7 @@ export default function Feed(){
             id: Math.random(),
             nickname: 'talesmelquiades',
             email: 'talesmelquiades@hotmail.com',
-            image: require('../../../assets/imgs/bw.jpg'),
+            image: require('../../assets/imgs/bw.jpg'),
             comments:[{
                 nickname: 'wtito',
                 comment: 'supera neguuuu'
@@ -30,7 +30,7 @@ export default function Feed(){
             id: Math.random(),
             nickname: 'wtito',
             email: 'wedertito8@gmail.com',
-            image: require('../../../assets/imgs/gate.jpg'),
+            image: require('../../assets/imgs/gate.jpg'),
             comments:[{
                 nickname: 'murilo_am',
                 comment: 'Zika!'
