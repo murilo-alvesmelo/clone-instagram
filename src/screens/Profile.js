@@ -8,15 +8,19 @@ import {
 } from 'react-native'
 import { Gravatar } from "react-native-gravatar";
 
-export default function Profile(){
+export default function Profile(props){
     const options = { email: 'murilo.melo72@gmail.com', secure: true}
+
+    const logout = () =>{
+        console.log(props.navigation.navigate('Auth'))
+    }
     return(
         <View style={styles.container}>
             <Gravatar options={options} style={styles.avatar}/>
             <Text style={styles.nickname}>murilo</Text>
             <Text style={styles.email}>murilo@mail</Text>
             <TouchableOpacity 
-                /* onPress={logout}  */
+                onPress={logout} 
                 style={styles.button}
             >
                 <Text>Sair</Text>

@@ -1,17 +1,28 @@
 import React from "react";
 import Feed from './screens/Feed';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Icon  from "react-native-vector-icons/Feather";
 import AddPhoto from "./screens/AddPhoto";
 import Profile from "./screens/Profile";
+import Login from "./screens/Login";
 
 const Tab = createBottomTabNavigator();
-
+const Stack = createNativeStackNavigator();
 
 export default function Navigation(){
+
+    function loginOrProfile(){
+        return(
+            <Stack.Navigator>
+                <Stack.Screen name="Login" component={Login}/>
+            </Stack.Navigator>
+        )
+    }
+
     return(
-        <NavigationContainer>
+        <NavigationContainer> 
             <Tab.Navigator
                 screenOptions={({ route }) =>({
                     headerShown: false,
@@ -33,6 +44,7 @@ export default function Navigation(){
                 <Tab.Screen name="Feed" component={Feed}/>
                 <Tab.Screen name="AddPhoto" component={AddPhoto}/>
                 <Tab.Screen name="Profile" component={Profile}/>
+                <Tab.Screen name="Auth" component={loginOrProfile}/>
             </Tab.Navigator>
         </NavigationContainer>
     )
