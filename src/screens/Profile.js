@@ -12,7 +12,7 @@ export default function Profile(props){
     const options = { email: 'murilo.melo72@gmail.com', secure: true}
 
     const logout = () =>{
-        console.log(props.navigation.navigate('Auth'))
+        props.navigation.navigate('Auth')
     }
     return(
         <View style={styles.container}>

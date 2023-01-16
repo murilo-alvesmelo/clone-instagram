@@ -13,10 +13,10 @@ const Stack = createNativeStackNavigator();
 
 export default function Navigation(){
 
-    function loginOrProfile(){
+    function LoginOrProfile(){
         return(
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
             </Stack.Navigator>
         )
     }
@@ -44,7 +44,7 @@ export default function Navigation(){
                 <Tab.Screen name="Feed" component={Feed}/>
                 <Tab.Screen name="AddPhoto" component={AddPhoto}/>
                 <Tab.Screen name="Profile" component={Profile}/>
-                <Tab.Screen name="Auth" component={loginOrProfile}/>
+                <Tab.Screen name="Auth" component={LoginOrProfile} options={{ tabBarStyle: {display: 'none'}}}/>
             </Tab.Navigator>
         </NavigationContainer>
     )
