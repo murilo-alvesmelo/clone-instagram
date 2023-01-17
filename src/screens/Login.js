@@ -14,7 +14,9 @@ export default function Login(props){
     const login = () =>{
         props.navigation.navigate('Profile')
     }
-
+    const signup = () =>{
+        props.navigation.navigate('Register')
+    }
     return(
         <View style={styles.container}>
             <TextInput
@@ -35,7 +37,7 @@ export default function Login(props){
             <TouchableOpacity onPress={login} style={styles.button}>
                 <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={signup} style={styles.button}>
                 <Text style={styles.buttonText}>Criar conta</Text>
             </TouchableOpacity>
         </View>

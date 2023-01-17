@@ -7,6 +7,7 @@ import Icon  from "react-native-vector-icons/Feather";
 import AddPhoto from "./screens/AddPhoto";
 import Profile from "./screens/Profile";
 import Login from "./screens/Login";
+import Register from "./screens/Register";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -15,8 +16,13 @@ export default function Navigation(){
 
     function LoginOrProfile(){
         return(
-            <Stack.Navigator>
-                <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+            <Stack.Navigator
+                screenOptions={({ route }) =>({
+                    headerShown: true,
+                })}
+            >
+                <Stack.Screen name="Login" component={Login}/>
+                <Stack.Screen name="Register" component={Register}/>
             </Stack.Navigator>
         )
     }
