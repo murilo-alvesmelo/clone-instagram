@@ -5,8 +5,20 @@ import Post from './src/components/Post';
 import Story from './src/components/Storys';
 import Feed from './src/screens/Feed';
 import Navigation from './src/Navigation';
+import { Provider } from 'react-redux';
+import storeConfig from './src/store/storeConfig';
 
 export default function App() {
+
+  const store = storeConfig()
+  function Redux(){
+    return(
+        <Provider store={store}>
+          <Navigation/>
+        </Provider>
+      )
+  }
+
   const comments = [{
     email: 'talesmelquiades@hotmail.com',
     nickname: 'Tales',
@@ -22,7 +34,7 @@ export default function App() {
   }]
   return (
     <View style={{flex: 1}}>
-      <Navigation/>
+      <Redux/>
     </View>
   );
 }

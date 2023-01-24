@@ -17,6 +17,7 @@ export default function Navigation(){
     function LoginOrProfile(){
         return(
             <Stack.Navigator
+                initialRouteName="Login"
                 screenOptions={({ route }) =>({
                     headerShown: true,
                 })}
