@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { login } from '../store/actions/userActions'
 import { 
     View, 
     Text, 
@@ -7,11 +9,14 @@ import {
     TextInput
 } from "react-native"
 
-export default function Login(props){
+
+function Login(props){
+    const [name, setName] = useState('murilo_am')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const login = () =>{
+        props.onLogin({email, password, name})
         props.navigation.navigate('Profile')
     }
     const signup = () =>{
@@ -70,3 +75,11 @@ const styles = StyleSheet.create({
 
     }
 })
+
+const mapDispatchToProps = (dispacth) => {
+    return {
+        onLogin: user => dispacth(login(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

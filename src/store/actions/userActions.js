@@ -1,4 +1,4 @@
-import { USER_LOGGED_IN, USER_LOGGED_OUT } from "./ascitonsTypes";
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from "./actionsTypes";
 
 export function login(user){
     return{
@@ -7,7 +7,7 @@ export function login(user){
     }
 }
 
-export function logout(user){
+export function logout(){
     return{
         type: USER_LOGGED_OUT
     }

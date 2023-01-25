@@ -6,6 +6,7 @@ import {
     Platform,
     Image
 } from 'react-native'
+import { connect } from "react-redux";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Icon  from "react-native-vector-icons/Feather";
@@ -13,7 +14,7 @@ import Icon  from "react-native-vector-icons/Feather";
 SplashScreen.preventAutoHideAsync();
 
 
-export default function Header(){
+function Header(props){
     const [fontsLoaded] = useFonts({
         'OleoScript-Regular': require('../../assets/fonts/OleoScript-Regular.ttf'),
     });
@@ -26,10 +27,9 @@ export default function Header(){
         <View style={styles.container}>
             <View style={styles.rowContainer} onLayout={onLayoutRootView}>
                 <Text style={styles.title}> Instagram </Text>
-                <View style={styles.rowIcons}>
-                    <Icon name="plus" size={25} style={styles.icon}/>
-                    <Icon name="heart" size={25} style={styles.icon}/>
-                    <Icon name="inbox" size={25} style={styles.icon}/>
+                <Text></Text>
+                <View style={styles.userContainer}>
+                    <Text style={styles.userText}>{props.name ? props.name : 'Anonimo'}</Text>
                 </View>
             </View>
         </View>
@@ -48,9 +48,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: "space-between"
     },
-    rowIcons: {
+    userContainer: {
         flexDirection: 'row',
-        alignItems: 'center',
+    },
+    userText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#808080'
     },
     icon: {
         marginLeft: 10
@@ -67,3 +71,12 @@ const styles = StyleSheet.create({
         fontSize: 24
     }
 })
+
+const mapStateToProps = ({user}) => {
+    return {
+        email: user.email,
+        name: user.name
+    }
+}
+
+export default connect(mapStateToProps)(Header)

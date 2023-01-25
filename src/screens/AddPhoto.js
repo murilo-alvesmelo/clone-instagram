@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Connect, connect } from "react-redux";
+import { addPost } from "../store/actions/postActions";
 import { View, 
     Text, 
     StyleSheet, 
@@ -12,7 +14,7 @@ import { View,
 } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 
-export default function AddPhoto(){
+function AddPhoto(props){
     const [image, setImage] = useState(null)
     const [comment, setComment] = useState('')
 
@@ -31,7 +33,19 @@ export default function AddPhoto(){
     }
 
     function save(){
-        Alert.alert('Imagem adicionada!', comment)
+       props.onAddPost({
+            id: Math.random(),
+            nickname: props.name,
+            email: props.email,
+            image: image,
+            comment: [{
+                nickname: props.name,
+                comment: comment
+            }]
+       })
+       setImage(null)
+       setComment('')
+       props.navigation.navitage('Feed')
     }
     return(
         <ScrollView>
@@ -90,3 +104,17 @@ const styles = StyleSheet.create({
         width: '90%'
     }
 })
+
+const mapStateToProps = ({user}) =>{
+    return {
+        email: user.email,
+        name: user.name
+    }
+}
+const mapDispatchtoProps = (dispacth) =>{
+    return {
+        onAddPost: post => dispacth(post) 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchtoProps)(AddPhoto)
