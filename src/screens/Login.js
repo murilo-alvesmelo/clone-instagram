@@ -12,8 +12,8 @@ import {
 
 function Login(props){
     const [name, setName] = useState('murilo_am')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('murilo.melo72@gmail.com')
+    const [password, setPassword] = useState('123456')
 
     const login = () =>{
         props.onLogin({email, password, name})

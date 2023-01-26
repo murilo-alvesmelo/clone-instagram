@@ -5,6 +5,7 @@ import Comments from "./Comments";
 import AddComment from "./AddComment";
 import Icon from "react-native-vector-icons/Feather";
 export default function Post(props){
+
         return(
             <View>
                 <Author email={props.email} nickname={props.nickname}/>
@@ -21,7 +22,7 @@ export default function Post(props){
                     </TouchableOpacity>
                 </View>
                 <Comments comments={props.comments}/>
-                <AddComment/>
+                <AddComment postId={props.id}/>
             </View>
         )
 }

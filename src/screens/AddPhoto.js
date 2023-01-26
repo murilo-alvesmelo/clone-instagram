@@ -17,7 +17,6 @@ import * as ImagePicker from 'expo-image-picker'
 function AddPhoto(props){
     const [image, setImage] = useState(null)
     const [comment, setComment] = useState('')
-
     const pickImage = async() =>{
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -32,20 +31,18 @@ function AddPhoto(props){
         }
     }
 
-    function save(){
+    async function save(){
        props.onAddPost({
             id: Math.random(),
             nickname: props.name,
             email: props.email,
-            image: image,
-            comment: [{
+            image: {uri: image},
+            comments: [{
                 nickname: props.name,
                 comment: comment
             }]
        })
-       setImage(null)
-       setComment('')
-       props.navigation.navitage('Feed')
+       props.navigation.navigate('Feed')
     }
     return(
         <ScrollView>
@@ -113,7 +110,7 @@ const mapStateToProps = ({user}) =>{
 }
 const mapDispatchtoProps = (dispacth) =>{
     return {
-        onAddPost: post => dispacth(post) 
+        onAddPost: post => dispacth(addPost(post)) 
     }
 }
 

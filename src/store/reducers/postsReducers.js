@@ -1,20 +1,8 @@
-import { ADD_POST } from "../actions/actionsTypes";
+import { ADD_COMMENT, ADD_POST } from '../actions/actionsTypes'
 
  const initialState = {
     posts: [{
-        id: Math.random(),
-        nickname: 'murilo_am',
-        email: 'murilo.melo72@gmail.com',
-        image: require('../../../assets/imgs/fence.jpg'),
-        comments:[{
-            nickname: 'Tales',
-            comment: 'Top dms'
-        },{
-            nickname: 'Tito',
-            comment: 'Show!'
-        }]
-    },{
-        id: Math.random(),
+        id: Math.random() * 100,
         nickname: 'talesmelquiades',
         email: 'talesmelquiades@hotmail.com',
         image: require('../../../assets/imgs/bw.jpg'),
@@ -42,6 +30,22 @@ import { ADD_POST } from "../actions/actionsTypes";
                 posts: state.posts.concat({
                     ...action.payload
                 })
+            }
+        case ADD_COMMENT:
+            return{
+                ...state,
+                posts: state.posts.map(post => {
+                    if(post.id === action.payload.postId) {
+                        if(post.comments){
+                            post.comments = post.comments.concat(
+                                action.payload.comment
+                            )
+                        }else{
+                            post.comments = [action.payload.comment]
+                        }
+                    }
+                    return post
+                }) 
             }
         default:
             return state

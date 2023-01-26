@@ -8,13 +8,21 @@ import {
     Alert
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
+import { connect } from "react-redux";
+import { addComment } from "../store/actions/postActions";
 
-export default function AddComment(){
+function AddComment(props){
     const [comment, setComment] = useState('');
     const [editMode, setEditMode] = useState(false)
-
-    const handleAddComment = () =>{
-        Alert.alert('Adicionado!', comment)
+    
+    async function handleAddComment(){
+        props.onComment({
+            postId: props.postId,
+            comments: [{
+                nickname: props.nickname,
+                comment: comment
+            }]
+        })
     }
     
     let commentArea = null
@@ -65,3 +73,17 @@ const styles = StyleSheet.create({
         width: '90%'
     }
 })
+
+const mapStateToProps = ({user}) => {
+    return {
+        nickname: user.name
+    }
+}
+
+const mapDispatchtoProps = (dispatch) =>{
+    return {
+        onComment: payload => dispatch(AddComment(payload)) 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchtoProps)(AddComment)

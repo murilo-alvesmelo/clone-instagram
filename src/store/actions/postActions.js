@@ -1,8 +1,15 @@
-import { ADD_POST } from "./actionsTypes";
+import { ADD_COMMENT, ADD_POST } from "./actionsTypes"
 
 export function addPost(post){
     return {
         type: ADD_POST,
         payload: post
+    }
+}
+
+export function addComment(payload){
+    return {
+        type: ADD_COMMENT,
+        payload
     }
 }
