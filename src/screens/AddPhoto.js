@@ -17,32 +17,45 @@ import * as ImagePicker from 'expo-image-picker'
 function AddPhoto(props){
     const [image, setImage] = useState(null)
     const [comment, setComment] = useState('')
+
+    const noUser = 'Você precisa estar logado para adicionar imagens'
+
     const pickImage = async() =>{
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 1,
-        });
-
-
-        if(!result.canceled){
-            setImage(result.assets[0].uri)
+        if(!props.name){
+            Alert.alert('Falha', noUser)
+            return
+        }else{
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+            
+            
+            if(!result.canceled){
+                setImage(result.assets[0].uri)
+            }
         }
     }
 
     async function save(){
-       props.onAddPost({
-            id: Math.random(),
-            nickname: props.name,
-            email: props.email,
-            image: {uri: image},
-            comments: [{
+        if(!props.name){
+            Alert.alert('Falha', noUser)
+            return
+        }else{
+            props.onAddPost({
+                id: Math.random(),
                 nickname: props.name,
-                comment: comment
-            }]
-       })
-       props.navigation.navigate('Feed')
+                email: props.email,
+                image: {uri: image},
+                comments: [{
+                    nickname: props.name,
+                    comment: comment
+                }]
+            })
+            props.navigation.navigate('Feed')
+        }
     }
     return(
         <ScrollView>

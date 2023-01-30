@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { Connect, connect } from "react-redux";
 import { View, StyleSheet, Dimensions, Image, Text, TouchableOpacity} from "react-native";
 import Author from "./Author";
 import Comments from "./Comments";
 import AddComment from "./AddComment";
 import Icon from "react-native-vector-icons/Feather";
-export default function Post(props){
 
+function Post(props){
+        
+        const addComment = props.name ? <AddComment postId={props.id}/> : null
         return(
             <View>
                 <Author email={props.email} nickname={props.nickname}/>
@@ -22,7 +25,7 @@ export default function Post(props){
                     </TouchableOpacity>
                 </View>
                 <Comments comments={props.comments}/>
-                <AddComment postId={props.id}/>
+                {addComment}
             </View>
         )
 }
@@ -44,3 +47,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
 })
+
+const mapStateToProps = ({user}) => {
+    return {
+        name: user.name
+    }
+}
+
+export default connect(mapStateToProps)(Post)

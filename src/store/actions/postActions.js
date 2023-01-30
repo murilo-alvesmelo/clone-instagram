@@ -10,6 +10,6 @@ export function addPost(post){
 export function addComment(payload){
     return {
         type: ADD_COMMENT,
-        payload
+        payload: payload
     }
 }

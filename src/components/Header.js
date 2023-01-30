@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Icon  from "react-native-vector-icons/Feather";
+import { Gravatar } from "react-native-gravatar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,6 +31,7 @@ function Header(props){
                 <Text></Text>
                 <View style={styles.userContainer}>
                     <Text style={styles.userText}>{props.name ? props.name : 'Anonimo'}</Text>
+                    {/* <Gravatar options={{ email: props.email, secure: true}} styles={styles.avatarUser}/> */}
                 </View>
             </View>
         </View>
@@ -69,7 +71,13 @@ const styles = StyleSheet.create({
         fontFamily: 'OleoScript-Regular',
         height: 30,
         fontSize: 24
-    }
+    },
+    avatarUser: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        marginHorizontal: 10
+    },
 })
 
 const mapStateToProps = ({user}) => {
