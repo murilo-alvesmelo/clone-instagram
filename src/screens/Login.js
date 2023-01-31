@@ -28,7 +28,7 @@ function Login(props){
                 placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
-                autoFocus={true}
+                autoFocus={false}
                 keyboardType="email-address"
                 style={styles.input}
             />

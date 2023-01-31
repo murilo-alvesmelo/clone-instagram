@@ -30,7 +30,7 @@ export default function Register(){
             <TextInput
                 style={styles.input}
                 placeholder="Senha"
-                autoFocus={true}
+                autoFocus={false}
                 secureTextEntry={true}
                 value={password}
                 onChangeText={setPassword}
