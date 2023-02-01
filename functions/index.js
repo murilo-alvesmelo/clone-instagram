@@ -13,11 +13,11 @@ const storage = new Storage({
 exports.uploadImage = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
         try {
-            fs.writeFileSync('/temp/imageToSave.jpg', request.body.image, 'base64')
+            fs.writeFileSync('/tmp/imageToSave.jpg', request.body.image, 'base64')
 
             const bucket = storage.bucket('insta-clone-d0c22.appspot.com')
             const id = uuid()
-            bucket.upload('/temp/imageToSave.jpg',{
+            bucket.upload('/tmp/imageToSave.jpg',{
                 uploadType: 'media',
                 destination: `/posts/${id}.jpg`,
                 metadata: {
@@ -32,8 +32,8 @@ exports.uploadImage = functions.https.onRequest((request, response) => {
                     response.status(500).json({ err: err })
                 }else{
                     const fileName = encodeURIComponent(file.name)
-                    const imageUrl = 'https://firebasestorage.googleapis.com/b/' + bucket.name + '/o/' + fileName + '?alt=media&token=' + id
-
+                    const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/' + bucket.name + '/o/' + fileName + '?alt=media&token=' + id
+                    console.log(fileName)
                     return response.status(201).json({ imageUrl: imageUrl })
                 }
             })
